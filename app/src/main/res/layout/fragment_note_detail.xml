@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            tools:text="30 мая" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            tools:text="12:53" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/black"
+            android:hint="title"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#B1B1B1"
+            android:textColorHint="#505050"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:hint="text"
+            android:paddingStart="20dp"
+            android:textColor="#B1B1B1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:text="+"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/lin_color"
+        android:layout_margin="20dp"
+        android:id="@+id/bnt_save"
+        />
+
+    <LinearLayout
+        android:id="@+id/lin_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#131212"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/radio_linear">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_black"
+            android:layout_width="80dp"
+            android:layout_height="46dp"
+            android:elevation="16dp"
+            app:cardBackgroundColor="#191818"
+            app:cardCornerRadius="16dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_white"
+            android:layout_width="80dp"
+            android:layout_height="46dp"
+            android:layout_marginHorizontal="46dp"
+            android:elevation="16dp"
+            app:cardBackgroundColor="#EBE4C9"
+            app:cardCornerRadius="16dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_red"
+            android:layout_width="80dp"
+            android:layout_height="46dp"
+            android:elevation="16dp"
+            app:cardBackgroundColor="#571818"
+            app:cardCornerRadius="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/radio_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#131212"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:color="@drawable/color_card"
+                android:button="@drawable/color_card2"
+                android:checked="true"
+                android:tag="black" />
+
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:background="@null"
+                android:button="@drawable/color_card"
+                android:tag="white" />
+
+            <RadioButton
+                android:id="@+id/radio3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:background="@null"
+                android:button="@drawable/color_card1"
+                android:gravity="center"
+                android:tag="red" />
+
+        </RadioGroup>
+        </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

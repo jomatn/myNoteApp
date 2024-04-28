@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0E0C0C"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="30dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="signup"
+        android:textColor="#8E8B8B"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_ph"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/et_custom"
+        android:drawablePadding="15dp"
+        android:hint="add_number"
+        android:inputType="phone"
+        android:paddingHorizontal="15dp"
+        android:textColor="#B1B1B1"
+        android:textColorHint="#B1B1B1" />
+
+    <EditText
+        android:id="@+id/et_code"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/et_custom"
+        android:drawablePadding="15dp"
+        android:hint="your_code"
+        android:paddingHorizontal="15dp"
+        android:textColor="#B1B1B1"
+        android:textColorHint="#B1B1B1" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/send_code"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_custom"
+            android:hint="add_cod"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+            app:cornerRadius="30dp" />
+
+
+        <Button
+            android:id="@+id/access_code"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_custom"
+            android:hint="confirm"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+
+            app:cornerRadius="30dp" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="tv_send_ag" />
+
+</LinearLayout>

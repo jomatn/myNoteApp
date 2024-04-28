@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onBoardFragment">
+
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="OnBoardFragment"
+        android:label="OnBoardFragment" >
+        <action
+            android:id="@+id/action_onBoardFragment_to_onBoardPagingFragment2"
+            app:destination="@id/onBoardPagingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardPagingFragment"
+        android:name="com.example.mynoteapp.ui.fragment.onBoard.OnBoardPagingFragment"
+        android:label="OnBoardPagingFragment" >
+        <action
+            android:id="@+id/action_onBoardPagingFragment_to_singUpFragment"
+            app:destination="@id/singUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="com.example.mynoteapp.ui.fragment.note.NoteFragment"
+        android:label="NoteFragment" >
+        <action
+            android:id="@+id/action_noteFragment_to_noteDetailFragment"
+            app:destination="@id/noteDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singUpFragment"
+        android:name="com.example.mynoteapp.ui.fragment.singUp.SingUpFragment"
+        android:label="SingUpFragment" >
+        <action
+            android:id="@+id/action_singUpFragment_to_noteFragment"
+            app:destination="@id/noteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="com.example.mynoteapp.ui.fragment.note.NoteDetailFragment"
+        android:label="NoteDetailFragment" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.mynoteapp.ui.fragment.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+</navigation>
