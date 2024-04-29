@@ -47,33 +47,16 @@ class SingUpFragment : Fragment() {
     }
 
     private fun setupListener() = with(binding) {
-        sendCode.setOnClickListener {
-            startPhoneNumberVerification(editPh.text.toString())
+        sendCode.setOnClickListener {у
             sendCode.isVisible = false
             accessCode.isVisible = true
         }
         accessCode.setOnClickListener {
-            verifyPhoneNumberWithCode(storedVerificationId, etCode.text.toString())
+
         }
     }
 
-    private fun verifyPhoneNumberWithCode(verificationId: String?, code: String) {
-        val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
-        signInWithPhoneAuthCredential(credential)
-    }
-
-    private fun startPhoneNumberVerification(phoneNumber: String) {
-        val options = PhoneAuthOptions.newBuilder(auth!!)
-            .setPhoneNumber(phoneNumber)
-            .setTimeout(60L, TimeUnit.SECONDS)
-            .setActivity(requireActivity())
-            .setCallbacks(callbacks)
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
-    }
-
-    private var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
+    
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
             signInWithPhoneAuthCredential(credential)
         }
