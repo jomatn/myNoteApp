@@ -92,7 +92,14 @@ class NoteFragment : Fragment(), OnClickItem {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 sharedPreferences.edit().putBoolean("notification_permission_requested", true).apply()
             } else {
-                // Permission denied
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Разрешение отклонено")
+                    .setMessage("Данному прилоежнию нужно разрешение для полноценной работы .")
+                    .setPositiveButton("OK") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
             }
         }
     }
