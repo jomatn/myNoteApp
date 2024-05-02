@@ -93,9 +93,17 @@ class NoteFragment : Fragment(), OnClickItem {
                 sharedPreferences.edit().putBoolean("notification_permission_requested", true).apply()
             } else {
                 AlertDialog.Builder(requireContext())
-                    .setTitle("Разрешение отклонено")
-                    .setMessage("Данному прилоежнию нужно разрешение для полноценной работы .")
-                    .setPositiveButton("OK") { dialog, _ ->
+                    .setTitle("Разрешить уведомления?")
+                    .setMessage("Этому приложению требуется разрешение для отправки уведомлений.")
+                    .setPositiveButton("Да") { dialog, _ ->
+                        ActivityCompat.requestPermissions(
+                            requireActivity(),
+                            arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                            notificationPermissionCode
+                        )
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("Нет") { dialog, _ ->
                         dialog.dismiss()
                     }
                     .create()
