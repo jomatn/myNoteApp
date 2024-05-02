@@ -29,7 +29,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/edit_ph"
+        android:id="@+id/et_mail"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="80dp"
@@ -70,7 +70,7 @@
 
 
         <Button
-            android:id="@+id/access_code"
+            android:id="@+id/btn_reg"
             android:layout_width="220dp"
             android:layout_height="50dp"
             android:background="@drawable/btn_custom"
