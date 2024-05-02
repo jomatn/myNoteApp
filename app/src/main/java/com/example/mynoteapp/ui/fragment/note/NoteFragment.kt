@@ -1,10 +1,14 @@
-package com.example.mynoteapp.ui.fragment.note
-
-import android.app.AlertDialog
+import android.Manifest
+import android.content.DialogInterface
+import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,20 +24,24 @@ class NoteFragment : Fragment(), OnClickItem {
     private lateinit var binding: FragmentNoteBinding
     private val noteAdapter = NoteAdapter(this)
     private val list: ArrayList<NoteModel> = ArrayList()
+    private val notificationPermissionCode = 1001
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentNoteBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initialize()
         setupListener()
         getData()
+        requestNotificationPermission()
     }
 
     private fun initialize() {
@@ -45,15 +53,47 @@ class NoteFragment : Fragment(), OnClickItem {
 
     private fun setupListener() {
         binding.btnPlus.setOnClickListener {
-            findNavController().navigate(R.id.action_noteFragment_to_noteDetailFragment,
-                null,
-            )
+            findNavController().navigate(R.id.action_noteFragment_to_noteDetailFragment, null)
         }
     }
 
     private fun getData() {
         App().getInstance()?.noteDao()?.getAll()?.observe(viewLifecycleOwner) {
             noteAdapter.submitList(it)
+        }
+    }
+
+    private fun requestNotificationPermission() {
+        sharedPreferences = requireActivity().getSharedPreferences("PermissionPrefs", android.content.Context.MODE_PRIVATE)
+        if (!isNotificationPermissionGranted() && !isPermissionRequestedBefore()) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                notificationPermissionCode
+            )
+        }
+    }
+
+    private fun isNotificationPermissionGranted(): Boolean {
+        return NotificationManagerCompat.from(requireContext()).areNotificationsEnabled()
+    }
+
+    private fun isPermissionRequestedBefore(): Boolean {
+        return sharedPreferences.getBoolean("notification_permission_requested", false)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == notificationPermissionCode) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                sharedPreferences.edit().putBoolean("notification_permission_requested", true).apply()
+            } else {
+                // Permission denied
+            }
         }
     }
 
